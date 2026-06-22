@@ -14,21 +14,6 @@ import { useAppContext } from '../../context/AppContext'
 import NavMenuItem from './NavMenuItem'
 import { homeMenu, pagesMenu, elementsMenu } from './navMenuData'
 
-/**
- * Small inline logo mark — a four-point "wind" glyph in primary blue,
- * standing in for the Hope UI brand mark without copying any asset.
- */
-function LogoMark() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
-
 const fontSizes = [
   { key: 'sm', label: 'A', textClass: 'text-xs' },
   { key: 'md', label: 'A', textClass: 'text-sm' },
@@ -46,10 +31,6 @@ const pageLabels = {
 
 const homeRoutes = ['/', '/images', '/videos', '/documents', '/all-files', '/trash']
 
-/**
- * Horizontal top navbar: logo, back button, section label, primary
- * menu, font-size control, search, cart, profile, and expand action.
- */
 export default function Navbar() {
   const { state, setSearchQuery } = useAppContext()
   const [activeSize, setActiveSize] = useState('md')
@@ -61,13 +42,14 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-20 flex items-center gap-4 border-b border-border bg-surface px-4 py-2.5 sm:px-6">
-      {/* Logo + brand */}
       <a href="/" className="flex items-center gap-2 text-primary">
-        <LogoMark />
-        <span className="text-lg font-bold tracking-tight text-textPrimary">Hope UI</span>
+        <img
+          src="https://hopeui.iqonic.design/wp-content/uploads/2023/03/logo.png"
+          alt="Hope UI"
+          className="h-7 w-auto"
+        />
       </a>
 
-      {/* Back button */}
       <button
         type="button"
         aria-label="Go back"
@@ -77,19 +59,15 @@ export default function Navbar() {
         <FiArrowLeft size={15} />
       </button>
 
-      {/* Current section label */}
       <span className="text-sm text-textSecondary">{currentLabel}</span>
 
-      {/* Primary horizontal menu */}
       <nav className="ml-2 hidden items-center gap-6 md:flex">
         <NavMenuItem label="Home" icon={FiHome} items={homeMenu} active={isHomeActive} />
         <NavMenuItem label="Pages" icon={FiFileText} items={pagesMenu} />
         <NavMenuItem label="Elements" icon={FiMessageSquare} items={elementsMenu} />
       </nav>
 
-      {/* Right-hand cluster */}
       <div className="ml-auto flex items-center gap-3">
-        {/* Font size selector */}
         <div className="hidden items-center gap-1 sm:flex">
           {fontSizes.map(({ key, label, textClass }) => (
             <button
@@ -101,9 +79,7 @@ export default function Navbar() {
               className={[
                 'flex h-7 w-7 items-center justify-center rounded-md font-semibold transition-colors',
                 textClass,
-                activeSize === key
-                  ? 'bg-primary text-white'
-                  : 'text-textSecondary hover:bg-page'
+                activeSize === key ? 'bg-primary text-white' : 'text-textSecondary hover:bg-page'
               ].join(' ')}
             >
               {label}
@@ -111,7 +87,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Search */}
         <label className="relative hidden items-center sm:flex">
           <span className="sr-only">Search</span>
           <input
@@ -124,7 +99,6 @@ export default function Navbar() {
           <FiSearch className="pointer-events-none absolute right-2.5 text-textSecondary" size={15} />
         </label>
 
-        {/* Cart */}
         <button
           type="button"
           aria-label="Open cart"
@@ -134,7 +108,6 @@ export default function Navbar() {
           <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-red-500" />
         </button>
 
-        {/* Profile */}
         <button
           type="button"
           aria-label="Open profile menu"
@@ -143,7 +116,6 @@ export default function Navbar() {
           <FiUser size={16} />
         </button>
 
-        {/* Expand / customizer */}
         <button
           type="button"
           aria-label="Expand"

@@ -3,11 +3,8 @@ import Sidebar from '../components/sidebar/Sidebar'
 import Navbar from '../components/navbar/Navbar'
 import Footer from '../components/common/Footer'
 import ImagePreviewModal from '../components/images/ImagePreviewModal'
+import FloatingActionButtons from '../components/common/FloatingActionButtons'
 
-/**
- * Shell layout: fixed sidebar + scrollable main column (navbar, page
- * content, footer). Every page renders through <Outlet /> here.
- */
 export default function DashboardLayout() {
   return (
     <div className="min-h-screen bg-page">
@@ -22,6 +19,7 @@ export default function DashboardLayout() {
       </div>
 
       <ImagePreviewModal />
+      <FloatingActionButtons />
     </div>
   )
 }

@@ -10,8 +10,36 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+<style>
+  #initial-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6fa;
+    transition: opacity 0.25s ease;
+  }
+  #initial-loader img {
+    width: 80px;
+    height: 80px;
+  }
+  #initial-loader.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
   </head>
   <body>
+    <div id="initial-loader" aria-label="Loading">
+  <img
+    src="https://templates.iqonic.design/hope-ui/pro/html/assets/images/loader.webp"
+    alt=""
+  />
+</div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
