@@ -3,12 +3,6 @@ import { useAppContext } from '../../context/AppContext'
 import { navGroups } from './navConfig'
 import SidebarLink from './SidebarLink'
 
-/**
- * Fixed left sidebar on desktop, slide-in drawer on mobile.
- * Visibility is driven by `state.sidebarOpen` in the centralized store.
- * The brand logo lives in the top navbar in this layout, so the
- * sidebar opens straight into the centered profile block.
- */
 export default function Sidebar() {
   const { state, toggleSidebar } = useAppContext()
   const { sidebarOpen } = state
@@ -41,7 +35,12 @@ export default function Sidebar() {
         {/* Centered user profile */}
         <div className="flex flex-col items-center px-5 pb-5 pt-7">
           <img
-            src="https://i.pravatar.cc/120?img=12"
+            src="https://hopeui.iqonic.design/wp-content/uploads/2023/03/logo.png"
+            alt="Hope UI"
+            className="mb-5 h-7 w-auto"
+          />
+          <img
+            src="https://templates.iqonic.design/hope-ui/html/dist/assets/images/avatars/01.png"
             alt="Profile portrait of the signed-in user"
             className="h-20 w-20 rounded-2xl object-cover"
           />
